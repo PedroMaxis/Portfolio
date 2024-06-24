@@ -4,7 +4,7 @@ export const LandingPage = ({ className, ...props }) => {
     
     <header className="bg-[#064064] p-5 flex flex-row gap-5 items-center justify-center shrink-0 h-20 relative right-0 left-0 top-0 overflow-hidden" style={{ boxShadow: 'rgba(0, 0, 0, 0.12) 0px 0px 6px 0px' }}>
           <div className="bg-[#ffc1be] rounded-[100px] shrink-0 w-10 h-10 relative"></div>
-          <h1 className="text-[#ffdddc] text-left font-['Roboto-Medium',_sans-serif] hidden md:flex text-[28px] leading-9 font-medium relative flex-1">Pedro Sales </h1>
+          <a href="/" className="text-[#ffdddc] text-left font-['Roboto-Medium',_sans-serif] hidden md:flex text-[28px] leading-9 font-medium relative flex-1">Pedro Sales </a>
           <div className="bg-[#064064] flex flex-row gap-10 items-center justify-center shrink-0 relative">
             <a href="/" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Home </a>
             <a href="sobremim" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Sobre mim </a>
@@ -109,7 +109,7 @@ export const LandingPage = ({ className, ...props }) => {
               <div className="text-[#ffdddc] text-left font-['Roboto-Medium',_sans-serif] text-sm leading-5 font-medium relative self-stretch">
                 Nome{" "}
               </div>
-              <input placeholder="Digite seu Nome" className="bg-[#ffffff] rounded-md border-solid border-[rgba(0,0,0,0.10)] border pt-2 pr-3 pb-2 pl-3 flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative" type="text" />
+              <input placeholder="Digite seu Nome" className="bg-[#ffffff] outline-0 rounded-md border-solid border-[rgba(0,0,0,0.10)] border pt-2 pr-3 pb-2 pl-3 flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative" type="text" />
             </div>
           </div>
           <div className="flex flex-row gap-20 items-start justify-start self-stretch shrink-0 relative">
@@ -117,7 +117,7 @@ export const LandingPage = ({ className, ...props }) => {
               <div className="text-[#ffdddc] text-left font-['Roboto-Medium',_sans-serif] text-sm leading-5 font-medium relative self-stretch">
                 Email{" "}
               </div>
-              <input placeholder="Digite seu Email" className="bg-[#ffffff] rounded-md border-solid border-[rgba(0,0,0,0.10)] border pt-2 pr-3 pb-2 pl-3 flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative" type="text" />
+              <input placeholder="Digite seu Email" className="bg-[#ffffff] outline-0 rounded-md border-solid border-[rgba(0,0,0,0.10)] border pt-2 pr-3 pb-2 pl-3 flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative" type="text" />
             </div>
           </div>
           <div className="flex flex-row gap-20 items-start justify-start self-stretch shrink-0 relative">
@@ -125,20 +125,20 @@ export const LandingPage = ({ className, ...props }) => {
               <div className="text-[#ffdddc] text-left font-['Roboto-Medium',_sans-serif] text-sm leading-5 font-medium relative self-stretch">
                 Mensagem{" "}
               </div>
-              <textarea placeholder="Digite sua Mensagem" className="bg-[#ffffff] rounded-md border-solid border-[rgba(0,0,0,0.10)] border pt-2 pr-3 pb-2 pl-3 flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative" type="text" />
+              <textarea placeholder="Digite sua Mensagem" className="bg-[#ffffff] outline-0 rounded-md border-solid border-[rgba(0,0,0,0.10)] border pt-2 pr-3 pb-2 pl-3 flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative" type="text" />
             </div>
           </div>
           <div className="flex flex-row gap-3 items-start justify-start shrink-0 relative overflow-hidden">
-            <div className="rounded-lg border-solid border-[#ffdddc] border p-3 flex flex-col gap-0 items-center justify-center shrink-0 w-60 relative">
+            <button className="rounded-lg border-solid border-[#ffdddc] border p-3 flex flex-col gap-0 items-center justify-center shrink-0 w-60 relative">
               <div className="text-[#ffdddc] text-left font-['Roboto-Medium',_sans-serif] text-base leading-6 font-medium relative">
                 Limpar Formulario{" "}
               </div>
-            </div>
-            <div className="bg-[#d4aeac] rounded-lg p-3 flex flex-col gap-0 items-center justify-center shrink-0 w-60 relative">
+            </button>
+            <button className="bg-[#d4aeac] rounded-lg p-3 flex flex-col gap-0 items-center justify-center shrink-0 w-60 relative">
               <div className="text-[#ffffff] text-left font-['Roboto-Medium',_sans-serif] text-base leading-6 font-medium relative">
                 Mandar Mensagem{" "}
               </div>
-            </div>
+            </button>
           </div>
         </div>
       </div>
