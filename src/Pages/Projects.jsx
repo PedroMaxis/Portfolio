@@ -1,4 +1,4 @@
-import Card from  '../Componenet/Card.jsx'
+import Card from  '../Component/Card.jsx'
 import { useState, useEffect } from 'react';
 
 export const Projetos = ({ className, ...props }) => {
@@ -28,14 +28,13 @@ useEffect(() => {
             <a href="/" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Home </a>
             <a href="sobremim" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Sobre mim </a>
             <a href="projetos" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Projetos </a>
-            <a href="#form" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Contato </a>
           </div>
         </header>
         <div className="flex mt-20 justify-center">
               <h1 className="fs-2 font-extrabold">MEUS PROJETOS</h1>
         </div>
-<div className="flex px-40 flex-wrap flex-col mt-5">
-  <div className="grid grid-cols-3 gap-10 items-center justify-center self-stretch shrink-0 relative">
+<div className="flex px-40 flex-wrap flex-col min-h-[28em] mt-5">
+  <div className="grid grid-cols-3 gap-10 items-center justify-center  self-stretch shrink-0 relative">
           {
             //repositories.length > 0 ?(
               repositories.map((repo) =>

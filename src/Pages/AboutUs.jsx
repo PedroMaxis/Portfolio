@@ -1,3 +1,6 @@
+
+import FadeInView from '../Component/FadeIn'
+
 export const AboutUs = () => {
     return (
         <>
@@ -9,10 +12,9 @@ export const AboutUs = () => {
             <a href="/" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Home </a>
             <a href="sobremim" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Sobre mim </a>
             <a href="projetos" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Projetos </a>
-            <a href="contato" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Contato </a>
           </div>
         </header>
-            
+            <FadeInView>
             <div className="text-center p-[150px] justify-center flex-1 padd font-extrabold relative text-[38px]">
                 <h1>SOBRE MIM</h1>
             </div>
@@ -33,7 +35,7 @@ export const AboutUs = () => {
   <a href="https://github.com/PedroMaxis"><img className="shrink-0 w-12 h-12 relative overflow-visible" src="./gitHub.png"/></a>
   <a href="https://www.figma.com/@pedro11sales14"><img className="shrink-0 w-12 h-12 relative overflow-visible" src="./Figma.png"/></a>
 </div>
-
+</FadeInView>
     <footer className="bg-[#064064] p-[60px] mt-5 flex flex-row gap-[60px] items-center justify-center self-stretch shrink-0 relative overflow-hidden">
         <div className="flex flex-row gap-[60px] items-center justify-center shrink-0 h-[100px] relative">
           <div className="text-[#ffdddc] text-center font-['Roboto-Regular',_sans-serif] text-xl leading-7 font-normal relative self-stretch w-[485px] flex items-center justify-center">

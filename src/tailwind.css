@@ -605,6 +605,10 @@ video {
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
 }
@@ -731,6 +735,10 @@ video {
 
 .shrink-0 {
   flex-shrink: 0;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -1160,6 +1168,10 @@ video {
 
 .text-\[rgba\(0\2c 0\2c 0\2c 0\.50\)\] {
   color: rgba(0,0,0,0.50);
+}
+
+.outline-0 {
+  outline-width: 0px;
 }
 
 @media (min-width: 768px) {

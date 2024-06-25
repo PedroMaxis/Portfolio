@@ -1,3 +1,6 @@
+import FadeInView from '../Component/FadeIn'
+
+
 export const LandingPage = ({ className, ...props }) => {
   return (
     <>
@@ -9,15 +12,14 @@ export const LandingPage = ({ className, ...props }) => {
             <a href="/" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Home </a>
             <a href="sobremim" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Sobre mim </a>
             <a href="projetos" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Projetos </a>
-            <a href="#form" className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative">Contato </a>
           </div>
         </header>
       <div className="pt-[60px] pr-[170px] pb-[60px] pl-[170px] flex flex-row gap-[60px] items-center justify-center self-stretch shrink-0 relative overflow-hidden">
         <div className="flex flex-col gap-6 items-center justify-start flex-1 relative">
-          <div className="text-[#000000] text-center font-['Roboto-Bold',_sans-serif] text-[40px] leading-[48px] font-bold relative w-[520px]">
+          <div className="anim-typewriter text-[#000000] text-center font-['Roboto-Bold',_sans-serif] text-[40px] leading-[48px] font-bold relative w-[520px]">
             Bem vindo ao Portfolio{" "}
           </div>
-          <div className="text-[#000000] text-center font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative w-[520px]">
+          <div className="anim-typewriter text-[#000000] text-center font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative w-[520px]">
             Veja Meus Ultimos Projetos e Habilidades{" "}
           </div>
         </div>
@@ -96,52 +98,24 @@ export const LandingPage = ({ className, ...props }) => {
       </div>
       <div id="form" className="bg-[#064064] pt-[60px] pr-[170px] pb-[60px] pl-[170px] flex flex-row gap-[60px] items-center justify-center self-stretch shrink-0 relative overflow-hidden">
         <div className="flex flex-col gap-6 items-start justify-start flex-1 relative">
-          <div className="text-[#ffdddc] text-left font-['Roboto-Bold',_sans-serif] text-[40px] leading-[48px] font-bold relative self-stretch">
-            Entre em Contato{" "}
-          </div>
-          <div className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative self-stretch">
-            Me envie uma mensagem ou pergunte sobre um projeto.{" "}
-          </div>
+          <FadeInView>
+            <div className="text-[#ffdddc] text-left font-['Roboto-Bold',_sans-serif] text-[40px] leading-[48px] font-bold relative self-stretch">
+              Entre em Contato
+            </div>
+          </FadeInView>
+          <FadeInView>
+            <div className="text-[#ffdddc] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal relative self-stretch">
+              Me envie uma mensagem ou pergunte sobre um projeto.
+            </div>
+          </FadeInView>
         </div>
+        <FadeInView>
         <div className="flex flex-col gap-10 items-start justify-center flex-1 relative">
-          <div className="flex flex-row gap-20 items-start justify-start self-stretch shrink-0 relative">
-            <div className="flex flex-col gap-1 items-start justify-center shrink-0 w-[520px] relative overflow-hidden">
-              <div className="text-[#ffdddc] text-left font-['Roboto-Medium',_sans-serif] text-sm leading-5 font-medium relative self-stretch">
-                Nome{" "}
-              </div>
-              <input placeholder="Digite seu Nome" className="bg-[#ffffff] outline-0 rounded-md border-solid border-[rgba(0,0,0,0.10)] border pt-2 pr-3 pb-2 pl-3 flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative" type="text" />
-            </div>
+          <h1 className="text-[#ffdddc] text-left font-['Roboto-Bold',_sans-serif] text-[30px] leading-[48px] font-bold relative self-stretch">pedro11sales14@gmail.com</h1>
           </div>
-          <div className="flex flex-row gap-20 items-start justify-start self-stretch shrink-0 relative">
-            <div className="flex flex-col gap-1 items-start justify-center shrink-0 w-[520px] relative overflow-hidden">
-              <div className="text-[#ffdddc] text-left font-['Roboto-Medium',_sans-serif] text-sm leading-5 font-medium relative self-stretch">
-                Email{" "}
-              </div>
-              <input placeholder="Digite seu Email" className="bg-[#ffffff] outline-0 rounded-md border-solid border-[rgba(0,0,0,0.10)] border pt-2 pr-3 pb-2 pl-3 flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative" type="text" />
-            </div>
-          </div>
-          <div className="flex flex-row gap-20 items-start justify-start self-stretch shrink-0 relative">
-            <div className="flex flex-col gap-1 items-start justify-center shrink-0 w-[520px] relative overflow-hidden">
-              <div className="text-[#ffdddc] text-left font-['Roboto-Medium',_sans-serif] text-sm leading-5 font-medium relative self-stretch">
-                Mensagem{" "}
-              </div>
-              <textarea placeholder="Digite sua Mensagem" className="bg-[#ffffff] outline-0 rounded-md border-solid border-[rgba(0,0,0,0.10)] border pt-2 pr-3 pb-2 pl-3 flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative" type="text" />
-            </div>
-          </div>
-          <div className="flex flex-row gap-3 items-start justify-start shrink-0 relative overflow-hidden">
-            <button className="rounded-lg border-solid border-[#ffdddc] border p-3 flex flex-col gap-0 items-center justify-center shrink-0 w-60 relative">
-              <div className="text-[#ffdddc] text-left font-['Roboto-Medium',_sans-serif] text-base leading-6 font-medium relative">
-                Limpar Formulario{" "}
-              </div>
-            </button>
-            <button className="bg-[#d4aeac] rounded-lg p-3 flex flex-col gap-0 items-center justify-center shrink-0 w-60 relative">
-              <div className="text-[#ffffff] text-left font-['Roboto-Medium',_sans-serif] text-base leading-6 font-medium relative">
-                Mandar Mensagem{" "}
-              </div>
-            </button>
-          </div>
+          </FadeInView>
         </div>
-      </div>
+      
 
       <div className="pt-[60px] pr-[170px] pb-[60px] pl-[170px] flex flex-row gap-[60px] items-center justify-center self-stretch shrink-0 relative overflow-hidden">
       <div className=" z-50 text-[#000000] text-center font-['Roboto-Regular',_sans-serif] text-xs leading-4 font-normal absolute right-4 left-4 top-[calc(50%_-_8px)] h-4 flex items-center justify-center "><p className=" text-[#ffdddc] text-lg">Vamos Colaborar e fazer um projeto Juntos</p></div>
