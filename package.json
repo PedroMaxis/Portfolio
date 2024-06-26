@@ -30,6 +30,8 @@
   "main": "src/index.jsx",
   "name": "react",
   "scripts": {
+    "start": "react-scripts start",
+    "predeploy": "npm run build",
     "build": "npm run build:style && vite build",
     "build:style": "tailwind build -i src/styles.css -c tailwind.config.js -o src/tailwind.css",
     "dev": "npm run build:style && vite",
