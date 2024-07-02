@@ -1,11 +1,20 @@
 import "./styles.css";
-import "./tailwind.css";
-import { Prototype } from "./Prototype/Prototype";
-
-export default function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LandingPage } from "./Pages/LandingPage";
+import { AboutUs } from "./Pages/AboutUs";
+import { Projetos } from "./Pages/Projects";
+ 
+const App = () => {
   return (
-    <div>
-      <Prototype />
-    </div>
+    <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<LandingPage />}></Route>
+          <Route path="sobremim" element={<AboutUs />} />
+          <Route path="projetos" element={<Projetos />} />
+          <Route path="contato" element={<LandingPage />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
+
+export default App;
