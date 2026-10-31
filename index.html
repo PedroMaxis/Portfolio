@@ -1,32 +1,111 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0a'/%3E%3Crect x='2' y='2' width='28' height='28' fill='%23f2f2f2'/%3E%3Ctext x='16' y='23' font-size='17' font-weight='900' text-anchor='middle' fill='%230a0a0a' font-family='Arial Black,sans-serif'%3EPS%3C/text%3E%3C/svg%3E" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#ff3d00" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="pt_BR" />
-    <meta property="og:title" content="Pedro Sales — Desenvolvedor de Software" />
-    <meta
-      property="og:description"
-      content="Software de ponta a ponta: web, automação e sistemas de baixa latência. Portfólio de Pedro Lourenço Sales, Belo Horizonte."
-    />
-    <meta name="twitter:card" content="summary" />
-    <title>Pedro Sales — Desenvolvedor de Software</title>
-    <meta
-      name="description"
-      content="Portfólio de Pedro Sales: desenvolvedor full-stack (TypeScript, React, Node, Python) e sistemas em C++."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.jsx"></script>
-  </body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pedro Sales — Full-stack developer</title>
+<meta name="description" content="Pedro Sales, full-stack developer in Belo Horizonte, Brazil. Automation platforms, desktop apps and real-time systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="tn" id="root">
+<div class="stage">
+<canvas id="gl" aria-hidden="true"></canvas>
+
+<section class="st" aria-label="Intro">
+<div class="intro">
+<div class="mono muted">[ <span data-i18n="role"></span> · Belo Horizonte, BR ]</div>
+<h1 class="disp name">PEDRO SALES</h1>
+<p class="lead" data-i18n="hero"></p>
+<div class="mono accent enter"><span class="pulse"><span data-i18n="enter"></span> ↓</span></div>
+</div>
+</section>
+
+<section class="st" aria-label="RPA Manager">
+<article class="panel">
+<div class="mono kicker"><span class="accent">01 / <span data-i18n="work"></span></span><span data-i18n="rpaWhere"></span></div>
+<h2 class="disp h-proj">RPA Manager</h2>
+<p class="body" data-i18n="rpaDesc"></p>
+<div class="mono tags"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Electron</span><span class="tag">Python</span><span class="tag">Playwright</span></div>
+<div class="mono status"><span class="dot live"></span><span data-i18n="prod"></span></div>
+</article>
+</section>
+
+<section class="st" aria-label="LeTopeiras Client">
+<article class="panel">
+<div class="mono kicker"><span class="accent">02 / <span data-i18n="work"></span></span><span data-i18n="personal"></span></div>
+<h2 class="disp h-proj">LeTopeiras Client</h2>
+<p class="body" data-i18n="ltDesc"></p>
+<div class="mono tags"><span class="tag">Node.js</span><span class="tag">TypeScript</span><span class="tag">Voice</span><span class="tag">60 fps share</span></div>
+<div class="mono status"><span class="row"><span class="dot live"></span><span data-i18n="prod"></span></span><a class="lk" href="https://github.com/PedroMaxis/LeTopeirasClient"><span data-i18n="code"></span> ↗</a></div>
+</article>
+</section>
+
+<section class="st" aria-label="TunnelRat">
+<article class="panel">
+<div class="mono kicker"><span class="accent">03 / <span data-i18n="work"></span></span><span data-i18n="personal"></span></div>
+<h2 class="disp h-proj">TunnelRat</h2>
+<p class="body" data-i18n="trDesc"></p>
+<div class="mono tags"><span class="tag">C++</span><span class="tag">Windows</span><span class="tag">Linux</span><span class="tag">1080p60</span><span class="tag">Gamepad</span></div>
+<div class="mono status"><span class="dot dev"></span><span data-i18n="dev"></span></div>
+</article>
+</section>
+
+<section class="st" aria-label="More projects">
+<div class="panel wide">
+<div class="mono accent mb20">04—11 / <span data-i18n="archive"></span></div>
+<div class="g2" id="archive"></div>
+</div>
+</section>
+
+<section class="st" aria-label="About">
+<div class="panel">
+<div class="mono accent mb24" data-i18n="about"></div>
+<h2 class="disp h-about" data-i18n="aboutTitle"></h2>
+<p class="body mb16" data-i18n="about1"></p>
+<p class="body small dim" data-i18n="about2"></p>
+<div id="jobs"></div>
+</div>
+</section>
+
+<section class="st" aria-label="Stack">
+<div class="w1080">
+<h2 class="disp h-stack">Stack</h2>
+<div class="stack" id="stack"></div>
+</div>
+</section>
+
+<section class="st" aria-label="Contact">
+<div class="w1000">
+<div class="mono muted center" data-i18n="contact"></div>
+<h2 class="disp h-contact"><span data-i18n="c1"></span> <span class="accent" data-i18n="c2"></span></h2>
+<div class="mono links">
+<a class="cl" href="mailto:pedro11sales14@gmail.com"><span>Email</span><span>pedro11sales14@gmail.com ↗</span></a>
+<a class="cl" href="https://github.com/PedroMaxis"><span>GitHub</span><span>@PedroMaxis ↗</span></a>
+<a class="cl last" href="https://www.linkedin.com/in/pedrolsales/"><span>LinkedIn</span><span>in/pedrolsales ↗</span></a>
+</div>
+</div>
+</section>
+
+<header class="mono hud-top">
+<span class="brand">PEDRO SALES <span class="accent">©</span> 2026</span>
+<span class="hide-sm muted">BHZ <span id="clock"></span></span>
+<div role="group" aria-label="Language" class="langs">
+<button type="button" class="btn" data-lang="en" aria-pressed="true">EN</button>
+<button type="button" class="btn" data-lang="pt" aria-pressed="false">PT</button>
+</div>
+</header>
+
+<footer class="hud-bottom">
+<div class="hud-row">
+<nav class="hide-sm navs" aria-label="Sections" id="nav"></nav></div>
+<div class="track"><div class="bar" id="bar"></div></div>
+</footer>
+</div>
+</div>
+<script src="main.js"></script>
+</body>
 </html>
