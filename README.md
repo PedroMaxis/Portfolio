@@ -15,14 +15,6 @@ Quis um site sem framework e sem build, só HTML, CSS e JavaScript puro, então 
 | `main.js` | Textos PT/EN, shader do túnel, scroll, navegação e relógio |
 | `og.png` | Imagem de prévia ao compartilhar o link |
 
-## Rodar local
-
-```bash
-python -m http.server 8080
-# ou
-npx serve .
-```
-
 ## Como funciona
 
 - O scroll controla a câmera do túnel e a posição de cada estação, que vem na direção de quem olha.
@@ -30,14 +22,6 @@ npx serve .
 - Estações com muito conteúdo se ajustam sozinhas a telas pequenas.
 - Se o FPS cair, a resolução do shader diminui sozinha.
 - Com "reduzir movimento" ativado no sistema, as estações aparecem sem zoom e o túnel fica parado.
-
-## Onde mexer
-
-- **Textos:** objeto `T` no início do `main.js` (chaves `en` e `pt`). Cada elemento com `data-i18n="chave"` no HTML puxa o texto dali.
-- **Projetos extras, cargos e stack:** `ARCHIVE`, `JOBS` e `STACK` no `main.js`.
-- **Cores:** variáveis do `:root` em `style.css`. A cor de destaque do shader é a constante `ACCENT` no `main.js`.
-- **Duração da viagem:** `height: calc(100vh + 7200px)` em `.tn`. Valor maior deixa o scroll mais longo.
-- **Idioma:** detectado pelo navegador; a escolha fica salva no `localStorage`.
 
 ## Publicar
 
