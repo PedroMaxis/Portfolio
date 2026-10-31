@@ -1,39 +1,44 @@
 # Portfólio — Pedro Sales
 
-Portfólio pessoal em formato de túnel 3D: o scroll leva o visitante por oito estações (Início, RPA Manager, LeTopeiras, TunnelRat, Mais projetos, Sobre, Stack e Contato). Bilíngue (PT/EN), com túnel em shader WebGL, paleta grafite e areia.
+Meu portfólio pessoal: um túnel 3D por onde o scroll te leva por oito estações (Início, RPA Manager, LeTopeiras, TunnelRat, Mais projetos, Sobre, Stack e Contato). É bilíngue (PT/EN), o túnel é um shader WebGL feito à mão e a paleta é grafite e areia.
 
-Site estático, sem build e sem dependências.
+Quis um site sem framework e sem build, só HTML, CSS e JavaScript puro, então ele abre direto no navegador.
+
+**Online:** https://pedromaxis.github.io/Portfolio/
 
 ## Estrutura
 
 | Arquivo | Função |
 | --- | --- |
-| `index.html` | Estrutura e as 8 estações |
+| `index.html` | Estrutura, textos em inglês (para quem não roda JS) e as 8 estações |
 | `style.css` | Visual; a paleta fica nas variáveis do `:root` |
 | `main.js` | Textos PT/EN, shader do túnel, scroll, navegação e relógio |
+| `og.png` | Imagem de prévia ao compartilhar o link |
 
 ## Rodar local
 
-Abrir o `index.html` no navegador já funciona. Com servidor:
-
 ```bash
-npx serve .
-# ou
 python -m http.server 8080
+# ou
+npx serve .
 ```
+
+## Como funciona
+
+- O scroll controla a câmera do túnel e a posição de cada estação, que vem na direção de quem olha.
+- Cada estação tem um endereço (`#tunnelrat`, `#about`...), então dá para compartilhar o link de uma seção.
+- Estações com muito conteúdo se ajustam sozinhas a telas pequenas.
+- Se o FPS cair, a resolução do shader diminui sozinha.
+- Com "reduzir movimento" ativado no sistema, as estações aparecem sem zoom e o túnel fica parado.
+
+## Onde mexer
+
+- **Textos:** objeto `T` no início do `main.js` (chaves `en` e `pt`). Cada elemento com `data-i18n="chave"` no HTML puxa o texto dali.
+- **Projetos extras, cargos e stack:** `ARCHIVE`, `JOBS` e `STACK` no `main.js`.
+- **Cores:** variáveis do `:root` em `style.css`. A cor de destaque do shader é a constante `ACCENT` no `main.js`.
+- **Duração da viagem:** `height: calc(100vh + 7200px)` em `.tn`. Valor maior deixa o scroll mais longo.
+- **Idioma:** detectado pelo navegador; a escolha fica salva no `localStorage`.
 
 ## Publicar
 
 A pasta sobe como está no GitHub Pages, Vercel ou Netlify.
-
-## Onde mexer
-
-- **Textos:** objeto `T` no início do `main.js` (chaves `en` e `pt`). No HTML, cada elemento com `data-i18n="chave"` puxa o texto dali.
-- **Projetos extras, cargos e stack:** `ARCHIVE`, `JOBS` e `STACK` no `main.js`.
-- **Cores:** variáveis do `:root` em `style.css` (`--bg`, `--line`, `--sand`...). A cor de destaque do shader é a constante `ACCENT` no `main.js`; as demais cores do túnel estão dentro do shader.
-- **Duração da viagem:** `height: calc(100vh + 7200px)` em `.tn`, no CSS. Valor maior deixa o scroll mais longo.
-- **Idioma:** detectado pelo navegador; a escolha fica salva no `localStorage`.
-
-## Acessibilidade
-
-Com "reduzir movimento" ativado no sistema, as estações aparecem sem zoom e o túnel fica parado.

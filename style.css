@@ -89,8 +89,8 @@ a{color:var(--sand)}a:hover{color:#FFFFFF}
 .hud-bottom{position:absolute;left:0;right:0;bottom:0;padding:0 32px 20px;z-index:5}
 .hud-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,860px) minmax(0,1fr);align-items:end;gap:24px}
 .navs{grid-column:2;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px}
-.counter{grid-column:3;justify-self:end;padding-bottom:12px}
-.counter span{color:var(--sand)}
+.counter{display:none;color:var(--sand);padding-bottom:12px;font-size:11px}
+:focus-visible{outline:2px solid var(--sand);outline-offset:3px}
 .nb{background:transparent;border:0;border-top:2px solid var(--line);color:var(--muted);padding:10px 0 0;min-height:44px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-align:center;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .2s,border-color .2s}
 .nb:hover{color:var(--sand)}
 .nb[aria-current="true"]{color:var(--sand);border-top-color:var(--ac)}
@@ -102,6 +102,15 @@ a{color:var(--sand)}a:hover{color:#FFFFFF}
 
 @media (max-width:860px){
   .hide-sm{display:none!important}
+  .counter{display:block}
+  .hud-row{grid-template-columns:minmax(0,1fr)}
+  .st{padding:72px 16px 88px}
+  .body{font-size:15px;margin-bottom:20px}
+  .lead{font-size:16px}
+  .kicker{margin-bottom:18px}
+  .h-proj{margin-bottom:16px}
+  .arc{padding:10px 0}
+  .cell{padding:16px}
   .panel{padding:24px}
   .g2{grid-template-columns:minmax(0,1fr)}
   .cl{padding:20px}.cl:hover{padding-left:30px}

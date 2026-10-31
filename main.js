@@ -62,8 +62,10 @@
   const root = $('#root');
   const stations = Array.from(document.querySelectorAll('.st'));
   const N = stations.length;
+  const SLUGS = ['intro', 'rpa-manager', 'letopeiras', 'tunnelrat', 'projects', 'about', 'stack', 'contact'];
   let lang = 'en';
   let idx = -1;
+  const fit = new Array(N).fill(1);
 
   function readLang() {
     try { const s = localStorage.getItem('lang'); if (s === 'en' || s === 'pt') return s; } catch (e) { /* no storage */ }
@@ -82,8 +84,8 @@
       const top = el('div', 'arc-top');
       top.appendChild(el('span', 'arc-name', a.name));
       const links = el('span', 'mono arc-links');
-      const r = el('a', 'lk', t.code); r.href = a.repo;
-      const d = el('a', 'lk', 'Demo'); d.href = a.demo;
+      const r = el('a', 'lk', t.code); r.href = a.repo; r.setAttribute('aria-label', t.code + ' — ' + a.name);
+      const d = el('a', 'lk', 'Demo'); d.href = a.demo; d.setAttribute('aria-label', 'Demo — ' + a.name);
       links.append(r, d); top.appendChild(links);
       row.append(top, el('div', 'arc-desc', a[lang]));
       arc.appendChild(row);
@@ -111,6 +113,8 @@
       b.addEventListener('click', () => goTo(i));
       nav.appendChild(b);
     });
+    updateCounter();
+    measure();
   }
 
   function setLang(l) {
@@ -133,11 +137,34 @@
     const span = r.height - window.innerHeight;
     return span > 0 ? Math.max(0, Math.min(1, -r.top / span)) : 0;
   }
-  function goTo(i) {
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function goTo(i, instant) {
     const r = root.getBoundingClientRect();
     const span = r.height - window.innerHeight;
-    window.scrollTo({ top: window.scrollY + r.top + span * (i / (N - 1)), behavior: 'smooth' });
+    window.scrollTo({ top: window.scrollY + r.top + span * (i / (N - 1)), behavior: (reduce || instant) ? 'auto' : 'smooth' });
   }
+
+  /* each station is scaled down when its content is taller than the screen */
+  function measure() {
+    const avail = Math.max(240, window.innerHeight - 150);
+    stations.forEach((s, i) => {
+      const c = s.firstElementChild;
+      const h = c ? c.offsetHeight : 0;
+      fit[i] = h > avail ? Math.max(0.45, avail / h) : 1;
+    });
+  }
+  window.addEventListener('resize', measure);
+
+  function updateCounter() {
+    const c = $('#counter');
+    if (c) c.textContent = '0' + (idx + 1) + ' / 0' + N + ' · ' + T[lang].nav[Math.max(0, idx)];
+  }
+
+  function slugIndex() {
+    const h = decodeURIComponent((location.hash || '').slice(1));
+    return SLUGS.indexOf(h);
+  }
+  window.addEventListener('hashchange', () => { const i = slugIndex(); if (i >= 0 && i !== idx) goTo(i); });
 
   /* ---------- mouse ---------- */
   const mouse = [0.5, 0.5], target = [0.5, 0.5];
@@ -190,7 +217,10 @@ void main(){
  gl_FragColor=vec4(col,1.);
 }`;
 
-  let gl = null, U = null;
+  let gl = null, U = null, dprCap = 1.5, resizeGL = function () {};
+  let resizeBound = false;
+  canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); gl = null; });
+  canvas.addEventListener('webglcontextrestored', initGL);
   function initGL() {
     gl = canvas.getContext('webgl', { antialias: false });
     if (!gl) return;
@@ -209,23 +239,29 @@ void main(){
     gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     U = {}; ['r', 't', 'm', 'ac', 'z0', 'vl', 'rl'].forEach((k) => { U[k] = gl.getUniformLocation(pr, k); });
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const dpr = Math.min(window.devicePixelRatio || 1, dprCap);
       const w = Math.max(1, Math.round(canvas.clientWidth * dpr)), h = Math.max(1, Math.round(canvas.clientHeight * dpr));
       if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
       gl.viewport(0, 0, canvas.width, canvas.height);
     };
-    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(canvas); else window.addEventListener('resize', resize);
+    resizeGL = resize;
+    if (!resizeBound) { resizeBound = true; if ('ResizeObserver' in window) new ResizeObserver(() => resizeGL()).observe(canvas); else window.addEventListener('resize', () => resizeGL()); }
     resize();
   }
 
   /* ---------- loop ---------- */
-  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const bar = $('#bar');
-  let ps = 0, vel = 0;
+  let ps = 0, vel = 0, last = 0, slow = 0, ready = false;
   const t0 = performance.now();
 
   function frame() {
     const now = performance.now();
+    if (last) {
+      slow += ((now - last) > 26 ? 1 : -1);
+      slow = Math.max(0, Math.min(90, slow));
+      if (slow >= 60 && dprCap > 0.75) { dprCap = Math.max(0.75, dprCap - 0.25); slow = 0; resizeGL(); }
+    }
+    last = now;
     const p = progress();
     const prev = ps;
     ps += (p - ps) * (reduce ? 1 : 0.075);
@@ -240,6 +276,7 @@ void main(){
       if (d < 0) { op = Math.max(0, Math.min(1, (d + 0.7) / 0.45)); sc = Math.exp(d * 1.5); }
       else { op = 1 - Math.max(0, Math.min(1, (d - 0.1) / 0.32)); sc = Math.exp(d * 2.4); }
       if (reduce) sc = 1;
+      sc *= fit[i];
       const px = (mouse[0] - 0.5) * -30 * (1 - Math.min(1, Math.abs(d))), py = (mouse[1] - 0.5) * 18;
       s.style.opacity = op.toFixed(3);
       s.style.visibility = op > 0.001 ? 'visible' : 'hidden';
@@ -251,6 +288,8 @@ void main(){
     if (ni !== idx) {
       idx = ni;
       document.querySelectorAll('#nav .nb').forEach((b, i) => b.setAttribute('aria-current', String(i === idx)));
+      updateCounter();
+      if (ready) { try { history.replaceState(null, '', idx === 0 ? location.pathname + location.search : '#' + SLUGS[idx]); } catch (e) { /* ignore */ } }
     }
     bar.style.width = (ps * 100).toFixed(2) + '%';
 
@@ -270,6 +309,12 @@ void main(){
 
   lang = readLang();
   render();
+  window.addEventListener('load', measure);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
   initGL();
+  const start = slugIndex();
+  if (start > 0) { goTo(start, true); ps = progress(); }
+  idx = -1;
   frame();
+  ready = true;
 })();
