@@ -4,7 +4,7 @@ Meu portfólio pessoal: um túnel 3D por onde o scroll te leva por oito estaçõ
 
 Quis um site sem framework e sem build, só HTML, CSS e JavaScript puro, então ele abre direto no navegador.
 
-**Online:** https://pedromaxis.github.io/Portfolio/
+**Online:** https://pedromaxis.github.io/
 
 ## Estrutura
 
